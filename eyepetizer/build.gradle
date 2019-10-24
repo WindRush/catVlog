@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    defaultConfig {
+//        applicationId "com.leowong.project.eyepetizer"
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+    }
+    repositories {
+        flatDir { dirs 'libs' }
+    }
+
+}
+//kapt {
+//    generateStubs = true
+//}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':video_player')
+    implementation project(':base')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    //圆角图片
+    implementation rootProject.ext.dependencies["roundedimageview"]
+    api('com.github.florent37:glidepalette:2.1.2') {
+        exclude module: 'glide'
+    }
+
+    //leakCanary
+    debugImplementation rootProject.ext.dependencies["canary-debug"]
+    releaseImplementation rootProject.ext.dependencies["canary-release"]
+
+    kapt 'com.sankuai.waimai.router:compiler:1.1.0'
+
+    //侧滑效果activity
+    implementation 'com.r0adkll:slidableactivity:2.0.6'
+
+
+}

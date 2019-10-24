@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.android.leo.toutiao.ui.widget.TipView
+        android:id="@+id/tip_view"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:visibility="gone"
+        app:tipBackgroundColor="@color/color_D5E8F6"
+        app:tipText="@string/net_unavailable"
+        app:tipTextColor="@color/color_4592C6"
+        app:tipTextSize="14sp" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/mRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlAccentColor="@android:color/white">
+
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:id="@+id/smart_refresh_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlAccentColor="@color/black33"
+            app:srlPrimaryColor="@color/color_F3F5F4" />
+
+        <com.classic.common.MultipleStatusView
+            android:id="@+id/feedMultipleStatusView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:loadingView="@layout/item_feed_loading_view">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/padding_tab_layout_bottom" />
+        </com.classic.common.MultipleStatusView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>
